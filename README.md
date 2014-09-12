@@ -14,5 +14,23 @@ HUBOT_BONUSLY_ADMIN_API_TOKEN
 ## Notes
 You can find your API token at https://bounus.ly/api
 
+## Installation
+Install this using NPM. Simply:
+
+1. Include this as a dependency in `package.json` e.g.
+
+```
+  "dependencies": {
+    "hubot": ">= 2.6.0 < 3.0.0",
+    [ lines deleted ]
+    "hubot-bonusly": ""
+  }
+```
+
+2. Add it to your `external-scripts.json` file e.g.
+```
+["hubot-foobar", "hubot-bonusly"]
+```
+
 ## Author
 [doofdoofsf](https://github.com/doofdoofsf)
