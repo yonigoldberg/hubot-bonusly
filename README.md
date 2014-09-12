@@ -12,7 +12,7 @@ HUBOT_BONUSLY_ADMIN_API_TOKEN
 -  `hubot bonuses` - lists recent micro-bonuses
 
 ## Notes
-You can find your API token at https://bounus.ly/api
+You can find the API token to set in `HUBOT_BONUSLY_ADMIN_API_TOKEN` at https://bounus.ly/api. Make sure you log in as a Bonusly admin user to get a admin token.
 
 ## Installation
 Install this using NPM. Simply:
