@@ -17,7 +17,7 @@ You can find your API token at https://bounus.ly/api
 ## Installation
 Install this using NPM. Simply:
 
-1. Include this as a dependency in `package.json` e.g.
+1. Include `hubot-bonusly` as a dependency in `package.json` e.g.
 
 ```
   "dependencies": {
@@ -27,7 +27,7 @@ Install this using NPM. Simply:
   }
 ```
 
-2. Add it to your `external-scripts.json` file e.g.
+2. Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 ```
 ["hubot-foobar", "hubot-bonusly"]
 ```
