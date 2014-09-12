@@ -1,0 +1,40 @@
+{
+  "name": "hubot-bonusly",
+  "description": "Hubot Bonusly integration - give micro-bonuses and get bonus activity",
+  "version": "1.0.0",
+  "author": "John Quinn <doofdoofsf@gmail.com>",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "bonus.ly",
+    "bonusly"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonusly/hubot-bonusly.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/bonusly/hubot-bonusly/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "script/test"
+  }
+}
