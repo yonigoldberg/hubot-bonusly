@@ -8,8 +8,8 @@
 #   HUBOT_BONUSLY_ADMIN_API_TOKEN
 #
 # Commands:
-#   hubot give <amount> to <name|email> for <reason> <#hashtag> - gives a micro-bonus to the specified user
-#   hubot bonuses - lists recent micro-bonuses
+#   hubot bonusly give <amount> to <name|email> for <reason> <#hashtag> - gives a micro-bonus to the specified user
+#   hubot bonusly bonuses - lists recent micro-bonuses
 #
 # Notes:
 #   To use this script, you must be signed up for Bonusly (https://bonus.ly) 
@@ -26,7 +26,7 @@ module.exports = (robot) ->
     msg.reply 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
     return
 
-  robot.respond /bonuses/i, (msg) ->
+  robot.respond /(bonusly)? bonuses/i, (msg) ->
     msg.reply "o.k. I'm grabbing 10 recent bonuses ..."
     path="/api/v1/bonuses?access_token=#{token}&limit=10"
     msg.http(service)
@@ -42,9 +42,9 @@ module.exports = (robot) ->
             msg.reply "Request (#{service}#{path}) failed (#{res.statusCode})."
 
 
-  robot.respond /(give) ?(.*)?/i, (msg) ->
+  robot.respond /(bonusly)? (give) ?(.*)?/i, (msg) ->
     giver = msg.message.user.name.toLowerCase()
-    text = msg.match[2]
+    text = msg.match[3]
 
     unless text?
       msg.reply "Usage: give <amount> to <name|email> for <reason> <#hashtag>"
