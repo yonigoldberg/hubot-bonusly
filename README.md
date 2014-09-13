@@ -12,9 +12,9 @@ HUBOT_BONUSLY_ADMIN_API_TOKEN
 -  `hubot bonuses` - lists recent micro-bonuses
 
 ## Notes
-You need to be a user of https://bonus.ly to use this.
+You need to be a user of (Bonusly)[https://bonus.ly] to use this.
 
-You can find the API token to set in `HUBOT_BONUSLY_ADMIN_API_TOKEN` at https://bonus.ly/api. Make sure you log in as a Bonusly admin user to get an admin token.
+You can find the API token to set in `HUBOT_BONUSLY_ADMIN_API_TOKEN` [here](https://bonus.ly/api). Make sure you log in as a Bonusly admin user to get an admin token.
 
 ## Installation
 Install this using NPM. Simply:
@@ -33,7 +33,7 @@ Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 [..., "hubot-bonusly"]
 ```
 
-More information on installation here: https://github.com/github/hubot/blob/master/docs/scripting.md
+More information on installation [here](https://github.com/github/hubot/blob/master/docs/scripting.md).
 
 ## Author
 [doofdoofsf](https://github.com/doofdoofsf)
