@@ -33,5 +33,7 @@ Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 ["hubot-foobar", "hubot-bonusly"]
 ```
 
+More information on installation here: https://github.com/github/hubot/blob/master/docs/scripting.md
+
 ## Author
 [doofdoofsf](https://github.com/doofdoofsf)
