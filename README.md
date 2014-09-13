@@ -23,14 +23,14 @@ Include `hubot-bonusly` as a dependency in `package.json` e.g.
 ```
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",
-    [ lines deleted ]
+    ... 
     "hubot-bonusly": ""
   }
 ```
 
 Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 ```
-["hubot-foobar", "hubot-bonusly"]
+[..., "hubot-bonusly"]
 ```
 
 More information on installation here: https://github.com/github/hubot/blob/master/docs/scripting.md

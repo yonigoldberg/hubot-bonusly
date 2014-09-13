@@ -49,11 +49,10 @@ module.exports = (robot) ->
     giver = msg.message.user.name.toLowerCase()
     text = msg.match[3]
 
-    unless text?
-      msg.reply "Usage: give <amount> to <name|email> for <reason> <#hashtag>"
-      return
-  
-    msg.reply "o.k. I'll try to give that bonus ..."
+    if text?
+      msg.reply "o.k. I'll try to give that bonus ..."
+    else
+      text = ''
 
     path = '/api/v1/bonuses/create_from_text'
     post = "access_token=#{token}&giver=#{giver}&client=#{adapter}&text=#{text}" 
