@@ -28,7 +28,6 @@ Install this using NPM. Simply:
     "hubot-bonusly": ""
   }
 ```
-
 2. Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 ```
 ["hubot-foobar", "hubot-bonusly"]
