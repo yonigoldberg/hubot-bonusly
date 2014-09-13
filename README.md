@@ -19,8 +19,7 @@ You can find the API token to set in `HUBOT_BONUSLY_ADMIN_API_TOKEN` at https://
 ## Installation
 Install this using NPM. Simply:
 
-##### Include `hubot-bonusly` as a dependency in `package.json` e.g.
-
+Include `hubot-bonusly` as a dependency in `package.json` e.g.
 ```
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",
@@ -29,7 +28,7 @@ Install this using NPM. Simply:
   }
 ```
 
-##### Add `hubot-bonusly` to your `external-scripts.json` file e.g.
+Add `hubot-bonusly` to your `external-scripts.json` file e.g.
 ```
 ["hubot-foobar", "hubot-bonusly"]
 ```
