@@ -23,11 +23,11 @@ module.exports = (robot) ->
   service = 'https://bonus.ly'
 
   unless token
-    msg.send 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
+    msg.reply 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
     return
 
   robot.respond /bonuses/i, (msg) ->
-    msg.send "o.k. I'm grabbing 10 recent bonuses ..."
+    msg.reply "o.k. I'm grabbing 10 recent bonuses ..."
     path="/api/v1/bonuses?access_token=#{token}&limit=10"
     msg.http(service)
       .path(path)
@@ -39,7 +39,7 @@ module.exports = (robot) ->
             bonuses_text = ("From #{bonus.giver.short_name} to #{bonus.receiver.short_name}: #{bonus.amount_with_currency} #{bonus.reason}" for bonus in bonuses).join('\n')
             msg.send bonuses_text
           else
-            msg.send "Request (#{service}#{path}) failed (#{res.statusCode})."
+            msg.reply "Request (#{service}#{path}) failed (#{res.statusCode})."
 
 
   robot.respond /(give) ?(.*)?/i, (msg) ->
@@ -47,10 +47,10 @@ module.exports = (robot) ->
     text = msg.match[2]
 
     unless text?
-      msg.send "Usage: give <amount> to <name|email> for <reason> <#hashtag>"
+      msg.reply "Usage: give <amount> to <name|email> for <reason> <#hashtag>"
       return
   
-    msg.send "o.k. I'll try to give that bonus ..."
+    msg.reply "o.k. I'll try to give that bonus ..."
 
     path = '/api/v1/bonuses/create_from_text'
     post = "access_token=#{token}&giver=#{giver}&client=#{adapter}&text=#{text}" 
@@ -63,4 +63,4 @@ module.exports = (robot) ->
           when 200
             msg.send body
           else
-            msg.send "Failed to give: (#{res.statusCode}). Tried to post (#{post}) to (#{service}#{path})"
+            msg.reply "Failed to give: (#{res.statusCode}). Tried to post (#{post}) to (#{service}#{path})"
