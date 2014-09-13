@@ -34,12 +34,15 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         switch res.statusCode
           when 200
-            bonus_data = JSON.parse body
-            bonuses = bonus_data.result
+            data = JSON.parse body
+            bonuses = data.result
             bonuses_text = ("From #{bonus.giver.short_name} to #{bonus.receiver.short_name}: #{bonus.amount_with_currency} #{bonus.reason}" for bonus in bonuses).join('\n')
             msg.send bonuses_text
+          when 400
+            data = JSON.parse body
+            msg.send data.message
           else
-            msg.reply "Request (#{service}#{path}) failed (#{res.statusCode})."
+            msg.send "Request (#{service}#{path}) failed (#{res.statusCode})."
 
 
   robot.respond /(bonusly)? (give) ?(.*)?/i, (msg) ->
@@ -61,6 +64,10 @@ module.exports = (robot) ->
       .post(post) (err, res, body) ->
         switch res.statusCode
           when 200
-            msg.send body
+            data = JSON.parse body
+            msg.send data.result
+          when 400
+            data = JSON.parse body
+            msg.send data.message
           else
-            msg.reply "Failed to give: (#{res.statusCode}). Tried to post (#{post}) to (#{service}#{path})"
+            msg.send "Failed to give: (#{res.statusCode}). Tried to post (#{post}) to (#{service}#{path})"
