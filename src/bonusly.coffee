@@ -50,9 +50,6 @@ module.exports = (robot) ->
       msg.send "Usage: give <amount> to <name|email> for <reason> <#hashtag>"
       return
   
-    # msg.send "Giving: bonus <#{text}> from <#{sender}> using adapter <#{adapter}>"
-    # return
-
     msg.send "o.k. I'll try to give that bonus ..."
 
     path = '/api/v1/bonuses/create_from_text'
