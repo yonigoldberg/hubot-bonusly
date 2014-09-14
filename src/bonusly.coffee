@@ -24,11 +24,11 @@ module.exports = (robot) ->
   service = 'https://bonus.ly'
 
   unless token
-    msg.reply 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
+    msg.send 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
     return
 
   robot.respond /(bonusly)? bonuses/i, (msg) ->
-    msg.reply "o.k. I'm grabbing 10 recent bonuses ..."
+    msg.send "o.k. I'm grabbing 10 recent bonuses ..."
     path="/api/v1/bonuses?access_token=#{token}&limit=10"
     msg.http(service)
       .path(path)
@@ -51,7 +51,7 @@ module.exports = (robot) ->
     text = msg.match[3]
 
     if text?
-      msg.reply "o.k. I'll try to give that bonus ..."
+      msg.send "o.k. I'll try to give that bonus ..."
     else
       text = ''
 
