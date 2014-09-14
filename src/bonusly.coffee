@@ -20,6 +20,7 @@
 module.exports = (robot) ->
   token = process.env.HUBOT_BONUSLY_ADMIN_API_TOKEN
   adapter = robot.adapterName
+  client = "hubot.#{robot.adapterName}"
   service = 'https://bonus.ly'
 
   unless token
@@ -55,7 +56,7 @@ module.exports = (robot) ->
       text = ''
 
     path = '/api/v1/bonuses/create_from_text'
-    post = "access_token=#{token}&giver=#{giver}&client=#{adapter}&text=#{text}" 
+    post = "access_token=#{token}&giver=#{giver}&client=#{client}&text=#{text}" 
 
     msg.http(service)
       .path(path)
