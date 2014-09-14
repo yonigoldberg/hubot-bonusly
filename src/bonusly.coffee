@@ -20,7 +20,7 @@
 module.exports = (robot) ->
   token = process.env.HUBOT_BONUSLY_ADMIN_API_TOKEN
   adapter = robot.adapterName
-  client = "hubot.#{robot.adapterName}"
+  client = "hubot-#{robot.adapterName}"
   service = 'https://bonus.ly'
 
   unless token
