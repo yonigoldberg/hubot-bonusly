@@ -29,7 +29,7 @@ module.exports = (robot) ->
     return
 
   robot.respond /(bonusly)? bonuses/i, (msg) ->
-    msg.send "o.k. I'm grabbing 10 recent bonuses ..."
+    msg.send "o.k. I'm grabbing recent bonuses ..."
     path="/api/v1/bonuses?access_token=#{token}&limit=10"
     msg.http(service)
       .path(path)
@@ -50,7 +50,7 @@ module.exports = (robot) ->
     type_str = msg.match[2]
     type = if (type_str? && type_str == 'giver') then 'giver' else 'receiver'
     path="/api/v1/leaderboards/count-#{type}?access_token=#{token}&limit=10"
-    msg.send "o.k. I'll pull up the top 10 #{type}s for you ..."
+    msg.send "o.k. I'll pull up the top #{type}s for you ..."
     msg.http(service)
       .path(path)
       .get() (err, res, body) ->
