@@ -10,6 +10,7 @@
 # Commands:
 #   hubot bonusly give <amount> to <name|email> for <reason> <#hashtag> - gives a micro-bonus to the specified user
 #   hubot bonusly bonuses - lists recent micro-bonuses
+#   hubot bonusly leaderboard <giver|receiver> -  show leaderboard for giving or receiving
 #
 # Notes:
 #   To use this script, you must be signed up for Bonusly (https://bonus.ly) 
@@ -39,6 +40,25 @@ module.exports = (robot) ->
             bonuses = data.result
             bonuses_text = ("From #{bonus.giver.short_name} to #{bonus.receiver.short_name}: #{bonus.amount_with_currency} #{bonus.reason}" for bonus in bonuses).join('\n')
             msg.send bonuses_text
+          when 400
+            data = JSON.parse body
+            msg.send data.message
+          else
+            msg.send "Request (#{service}#{path}) failed (#{res.statusCode})."
+
+  robot.respond /(bonusly)? ?leaderboard ?(giver|receiver)?/i, (msg) ->
+    type_str = msg.match[2]
+    type = if (type_str? && type_str == 'giver') then 'giver' else 'receiver'
+    path="/api/v1/leaderboards/count-#{type}?access_token=#{token}&limit=10"
+    msg.send "o.k. I'll pull up the top 10 #{type}s for you ..."
+    msg.http(service)
+      .path(path)
+      .get() (err, res, body) ->
+        switch res.statusCode
+          when 200
+            leaders = JSON.parse body
+            leaders_text = ("##{index+1} with #{leader.count} bonuses: #{leader.user.first_name} #{leader.user.last_name}" for leader, index in leaders).join('\n')
+            msg.send leaders_text
           when 400
             data = JSON.parse body
             msg.send data.message

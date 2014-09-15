@@ -10,6 +10,8 @@ HUBOT_BONUSLY_ADMIN_API_TOKEN
 ## Commands
 -  `hubot give <amount> to <name|email> for <reason> <#hashtag>` - gives a micro-bonus to the specified user
 -  `hubot bonuses` - lists recent micro-bonuses
+-  `hubot bonusly leaderboard <giver|receiver>` - show leaderboard for giving or receiving
+
 
 ## Notes
 You need to be a user of [Bonusly](https://bonus.ly) to use this.
