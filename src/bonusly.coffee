@@ -1,5 +1,5 @@
 # Description:
-#   Allows users to give 'micro-bonuses' on bonusly via Hubot 
+#   Allows users to give 'micro-bonuses' on bonusly via Hubot
 #
 # Dependencies:
 #   None
@@ -13,7 +13,7 @@
 #   hubot bonusly leaderboard <giver|receiver> -  show leaderboard for giving or receiving
 #
 # Notes:
-#   To use this script, you must be signed up for Bonusly (https://bonus.ly) 
+#   To use this script, you must be signed up for Bonusly (https://bonus.ly)
 #
 # Author:
 #   doofdoofsf
@@ -25,7 +25,10 @@ module.exports = (robot) ->
   service = 'https://bonus.ly'
 
   unless token
-    msg.send 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
+    if msg?
+      msg.send 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN_API_TOKEN environment variable.'
+    else
+      console.log 'The Bonusly API token is not set. Navigate to https://bonus.ly/api as an _admin_ user (important), grab the access token and set the HUBOT_BONUSLY_ADMIN environment variable.'
     return
 
   robot.respond /(bonusly)? bonuses/i, (msg) ->
@@ -76,7 +79,7 @@ module.exports = (robot) ->
       text = ''
 
     path = '/api/v1/bonuses/create_from_text'
-    post = "access_token=#{token}&giver=#{giver}&client=#{client}&text=#{text}" 
+    post = "access_token=#{token}&giver=#{giver}&client=#{client}&text=#{text}"
 
     msg.http(service)
       .path(path)
